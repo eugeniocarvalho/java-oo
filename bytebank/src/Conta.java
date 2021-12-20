@@ -10,11 +10,22 @@ public class Conta{
     }
     
     public boolean saque(double valor) {
-    	if (saldo - valor >= 0) {
-    		saldo -= valor;
+    	if (this.saldo >= valor) {
+    		this.saldo -= valor;
+    
     		return true;
     	}
     	
-    	return false;    		
+    	return false;
+    }
+    
+    public boolean transfere(Conta contaDestino, double valor) {
+    	if (this.saque(valor)) {
+    		contaDestino.deposita(valor);
+    		
+    		return true;
+    	}
+    	
+    	return false;
     }
 }
